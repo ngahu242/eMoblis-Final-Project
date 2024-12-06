@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Community Forum</h2>
+
+    <!-- Display success message -->
+    {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Form to create a new post -->
+    <div class="col-md-8 mx-auto">
+        <h4>Start a Discussion</h4>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="topicTitle" class="form-label">Topic Title</label>
+                <input type="text" class="form-control" id="topicTitle" name="title" placeholder="Enter topic title" required>
+            </div>
+            <div class="mb-3">
+                <label for="topicMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="topicMessage" name="message" rows="4" placeholder="Write your message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Post Discussion</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

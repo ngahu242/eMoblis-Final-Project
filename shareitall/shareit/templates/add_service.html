@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Offer a Service</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="serviceName" class="form-label">Service Name</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-3">
+            <label for="serviceDescription" class="form-label">Description</label>
+            {{ form.description }}
+        </div>
+        <div class="mb-3">
+            <label for="contactInfo" class="form-label">Contact Information</label>
+            {{ form.contact_info }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Service</button>
+    </form>
+</div>
+{% endblock %}

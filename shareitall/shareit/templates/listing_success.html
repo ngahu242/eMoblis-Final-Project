@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing Successful</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="success-message">Congratulations! Your Listing Was Posted Successfully</h1>
+        <div class="listing-details">
+            <h2>Details of Your Listing</h2>
+            <div class="product-image">
+                <!-- Display the first image of the listing -->
+                <img src="{{ listing.images.first.url }}" alt="{{ listing.name }}">
+            </div>
+            <div class="product-info">
+                <p><strong>Title:</strong> {{ listing.name }}</p>
+                <p><strong>Description:</strong> {{ listing.description }}</p>
+                <p><strong>Price:</strong> KSh {{ listing.price }}</p>
+                <p><strong>Category:</strong> {{ listing.category.name }}</p>
+                <p><strong>Location:</strong> {{ listing.location }}</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="{% url 'listing_detail' listing.id %}" class="btn btn-primary">View Your Listing</a>
+                <a href="{% url 'home' %}" class="btn btn-secondary">Go to Homepage</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
