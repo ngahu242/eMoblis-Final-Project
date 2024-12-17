@@ -1,7 +1,6 @@
 
 
 
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -29,7 +28,6 @@ body {
 
 
 
-
 /* style.css */
 body {
     background-color: #f9f9f9;
@@ -44,8 +42,8 @@ body {
     padding: 20px;
 }
 
-h2 {
-    color: #0056b3;
+.container h2 {
+    color: #020202;
     font-weight: bold;
 }
 
@@ -146,3 +144,190 @@ h1.success-message {
     background-color: #495057;
 }
 
+
+
+/* Welcome Section Styling */
+.welcome-section {
+    position: relative;
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    color: #020202; /* White text for contrast */
+    padding: 60px 20px; /* Adjust padding to create space */
+    border-radius: 10px;
+}
+
+/* Adding shadow to text for better visibility */
+.welcome-section h1 {
+    font-size: 2.5rem;
+    color: #020202;
+/* Darker shadow for better contrast */
+}
+
+
+/* Adjusting for mobile responsiveness */
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 40px 15px;
+    }
+}
+
+
+
+.welcome-section {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white; /* White text color */
+    padding: 50px; /* Adjust padding for content spacing */
+    border-radius: 10px; /* Rounded corners */
+}
+
+
+
+.welcome-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    border-radius: 10px; /* Rounded corners for overlay */
+    z-index: 1;
+}
+
+.welcome-section h1, .welcome-section p {
+    position: relative;
+    z-index: 2; /* Ensure text is above the overlay */
+}
+
+
+/* Styles for the carousel section */
+/* Styles for the carousel section */
+.carousel-section {
+    background-color: #f7f7f7; /* Light gray background for the section */
+    padding: 30px 0; /* Add padding to the top and bottom */
+    border-radius: 10px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+
+}
+
+.carousel-inner {
+    width: 100%;
+    max-height: 100%;
+}
+
+.carousel-item {
+    height: 100%; /* Ensure the carousel items take up full height */
+}
+
+.carousel-content {
+    text-align: center;
+    padding: 40px;
+    animation: fadeInUp 1.5s ease;
+}
+
+.carousel-content h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #020202;
+}
+
+.carousel-content p {
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Add animation for sliding content */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Customize carousel control buttons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Customize carousel indicators */
+.carousel-indicators button {
+    background-color: white;
+}
+
+.carousel-indicators .active {
+    background-color: #2575fc;
+}
+
+
+
+
+
+/* Donation Section Styles */
+.donation-section {
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.donation-section h2 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.donation-section p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.modal-content {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+}
+
+.modal-header {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-body input,
+.modal-body select {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.modal-body button {
+    background-color: #28a745;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.modal-body button:hover {
+    background-color: #218838;
+}
+
+.btn-lg {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    background-color: #28a745;
+}
+
+.btn-lg:hover {
+    background-color: #218838;
+}

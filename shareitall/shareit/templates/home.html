@@ -1,64 +1,66 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShareItFree</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <!-- Navbar with increased height and larger buttons -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
-        <div class="container">
-            <h2 class="navbar-brand fs-3"> ShareItFree</h2>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active fs-5 px-3" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 px-3" href="{% url 'about_us' %}">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 px-3" href="{% url 'contact_us' %}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-5 px-3" href="{% url 'login' %}" data-bs-toggle="modal" data-bs-target="#accountModal">Account</a>
-                    </li>
-                </ul>
+
+<!-- Welcome Section -->
+<div class="container mt-4 mb-5 text-center bg-light p-5 rounded welcome-section" style="background-image: url('{% static 'images/welcome.png' %}');">
+    <h1>Welcome to ShareItFree!</h1>
+    <p>Start exploring services, listings, and more! Our platform offers a wide variety of community-driven services, from home repairs to tech support, and allows users to post items for sale or offer services. Whether you're looking for help or hoping to provide assistance, ShareItFree connects you with others who share your needs. Join today to explore opportunities for collaboration, learning, and building lasting connections!</p>
+</div>
+
+
+<!-- Carousel Section -->
+<div class="container carousel-section" style="background-image: url('{% static "images/sharing.png" %}');">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-content-container d-flex justify-content-center align-items-center h-100">
+                    <div class="carousel-content text-center">
+                        <h2>Our Goal</h2>
+                        <p>The goal of ShareItFree is to create a vibrant, accessible online community where users can freely share products, services, and knowledge, fostering collaboration and mutual support.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-content-container d-flex justify-content-center align-items-center h-100">
+                    <div class="carousel-content text-center">
+                        <h2>Our Mission</h2>
+                        <p>To provide a platform that empowers individuals to offer their skills, list products, and engage in discussions, creating an inclusive environment for learning, trading, and service offerings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-content-container d-flex justify-content-center align-items-center h-100">
+                    <div class="carousel-content text-center">
+                        <h2>Our Vision</h2>
+                        <p>To become the leading platform for community-driven sharing, connecting people worldwide and helping them unlock the potential of shared resources for a better, more sustainable future.</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <div class="container mt-4">
-        <h1>Welcome to ShareItFree!</h1>
-        <p>Start exploring services, listings, and more.</p>
-        <!-- Additional content for the Home page -->
-    </div>
-
-    <div class="container mt-4">
-        <h1 class="text-center mb-4">Welcome to ShareItFree</h1>
-        <div class="row text-center">
-    <!-- Section for Community Forum -->
-<div class="col-md-4 mb-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Community Forum</h5>
-            <p class="card-text">Join discussions, ask questions, and share knowledge with the community.</p>
-            <div class="d-flex justify-content-between">
-                <a href="{% url 'forum' %}" class="btn btn-info"> Start Discussion</a>
-                <a href="{% url 'ongoing_discussions' %}" class="btn btn-warning">Ongoing Discussions</a>
-            </div>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
+
+
+
+<div class="container mt-4">
+        <h1 class="text-center mb-4">ShareItFree</h1>
+
+    <div class="row text-center">
 
 <!-- Section for Listing a Product -->
 <div class="col-md-4 mb-4">
@@ -87,8 +89,44 @@
         </div>
     </div>
 </div>
+ <!-- Section for Community Forum -->
+        <div class="col-md-4 mb-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Community Forum</h5>
+            <p class="card-text">Join discussions, ask questions, and share knowledge with the community.</p>
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'forum' %}" class="btn btn-info"> Start Discussion</a>
+                <a href="{% url 'ongoing_discussions' %}" class="btn btn-warning">Ongoing Discussions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+   <!-- Donations Section -->
+<div class="container mt-5 mb-5 text-center bg-light p-5 rounded">
+    <h2 class="mb-4">Support Our Cause</h2>
+    <p>Your generous donation helps us provide essential services, support those in need, and create opportunities for individuals who require assistance. We believe in fostering a community where we can all support one another, and your contribution plays a vital role in making that possible.</p>
+    <p>With your donation, we can:</p>
+    <ul class="list-unstyled">
+        <li>Provide essential services to underprivileged individuals.</li>
+        <li>Fund educational programs for those seeking new opportunities.</li>
+        <li>Support people in need of food, clothing, and shelter.</li>
+        <li>Organize community-building events and initiatives.</li>
+    </ul>
+    <p>Together, we can make a real difference. Every donation, no matter the size, has a meaningful impact.</p>
+    <a href="{% url 'donation_form' %}"" class="btn btn-success btn-lg">Donate Now</a>
+</div>
+
+<div class="text-center mt-4">
+    <a href="{% url 'current_donations' %}" class="btn btn-info">View Current Donations</a>
+</div>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+{% endblock %}

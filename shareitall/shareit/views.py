@@ -1,11 +1,68 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Listing, ForumPost, Category, ProductListing, Service
-from .forms import ListingForm, ServiceForm, ForumPostForm, CommentForm
-
-
+from .models import Listing, ForumPost, Donation, ProductListing, Service, Category
+from .forms import ListingForm, ServiceForm, ForumPostForm, CommentForm, DonationForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
+
+from django.http import JsonResponse
+from .mpesa import Mpesa
+from django.contrib import messages
+
+#Donation
+
+def donation_form(request):
+    if request.method == 'POST':
+        form = DonationForm(request.POST)
+        if form.is_valid():
+            # Get the cleaned data from the form
+            donor_name = form.cleaned_data['donor_name']
+            donor_phone_number = form.cleaned_data['donor_phone_number']
+            amount = form.cleaned_data['amount']
+
+            # Initiate M-Pesa STK push
+            try:
+                response = Mpesa.stk_push(donor_phone_number, amount)
+                if response.get('ResponseCode') == '0':  # Successful transaction
+                    # Save the donation to the database
+                    donation = Donation(
+                        donor_name=donor_name,
+                        donor_phone_number=donor_phone_number,
+                        amount=amount,
+                        payment_method="M-Pesa"
+                    )
+                    donation.save()
+
+                    # Show success message
+                    messages.success(request, "Payment request sent. Please check your phone to complete the transaction.")
+                    return redirect('donation_success', donation_id=donation.id)  # Redirect to the success page
+                else:
+                    # Handle failed payment
+                    messages.error(request, f"Payment failed: {response.get('errorMessage', 'Unknown error')}")
+                    return render(request, 'donation_form.html', {'form': form})  # Stay on the form page
+
+            except Exception as e:
+                # Handle any exception that occurs during the STK push
+                messages.error(request, "There was an issue processing your donation. Please try again later.")
+                return render(request, 'donation_form.html', {'form': form})  # Stay on the form page
+
+    else:
+        form = DonationForm()
+
+    return render(request, 'donation_form.html', {'form': form})
+
+def current_donations(request):
+    donations = Donation.objects.all().order_by('-created_at')  # Ordering by creation date
+    return render(request, 'current_donations.html', {'donations': donations})
+
+def mpesa_callback(request):
+    if request.method == 'POST':
+        # Log or process the M-Pesa callback response
+        print(request.body)  # For debugging, print the request body
+        return JsonResponse({'ResultCode': 0, 'ResultDesc': 'Accepted'})
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
 
 #Home
 def home(request):
@@ -142,7 +199,6 @@ def ongoing_discussions(request):
 
 
 #Registration
-
 
 def login_view(request):
     if request.method == 'POST':

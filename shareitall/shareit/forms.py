@@ -1,6 +1,6 @@
 
 from django import forms
-from .models import Category, Listing, Service, ForumPost, Comment
+from .models import Category, Listing, Service, ForumPost, Comment, Donation
 
 
 class ListingForm(forms.ModelForm):
@@ -27,3 +27,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text']
 
+class DonationForm(forms.Form):
+    donor_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}))
+    donor_phone_number = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your phone number'}))
+    amount = forms.DecimalField(max_digits=10, decimal_places=2, widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter donation amount'}))

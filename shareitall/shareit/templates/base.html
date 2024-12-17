@@ -1,4 +1,5 @@
 {% load static %}
+
 {% load custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
@@ -31,13 +32,12 @@
                         <a class="nav-link fs-5 px-3" href="{% url 'contact_us' %}">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 px-3" href="{% url 'login' %}" data-bs-toggle="modal" data-bs-target="#accountModal">Account</a>
+                        <a class="nav-link fs-5 px-3" href="#" data-bs-toggle="modal" data-bs-target="#accountModal">Account</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
     <!-- Login/Signup Modal (this will appear only when triggered) -->
     <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -86,6 +86,10 @@
     </div>
     <!-- Content Block: This will be replaced with content from child templates -->
     {% block content %}
+
+
+
+
     {% endblock %}
 
 

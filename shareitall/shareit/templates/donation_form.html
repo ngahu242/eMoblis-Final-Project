@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- Donation Form Section -->
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="text-center">Make a Donation</h2>
+
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} mt-3">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Donation Form -->
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mt-3">Initiate STK Push</button>
+        </form>
+    </div>
+{% endblock %}

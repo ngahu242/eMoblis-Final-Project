@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" xmlns="http://www.w3.org/1999/html">
+        <h2 class="text-center">Donation Successful</h2>
+        <p>Thank you for your generous donation of KSh {{ donation.amount }}.</p>
+        <p>Your donation has been processed successfully. A confirmation has been sent to your phone.</p>
+    <button>
+           <a href="{% url 'current_donations' %}" class="btn btn-primary">View your Donation</a>
+    </button>
+
+</div>
+
+{% endblock %}

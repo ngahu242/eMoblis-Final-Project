@@ -61,3 +61,13 @@ class Listing(models.Model):
     def __str__(self):
         return self.title
 
+
+class Donation(models.Model):
+    donor_name = models.CharField(max_length=100)
+    donor_phone_number = models.CharField(max_length=15, default='0000000000')
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    payment_method = models.CharField(max_length=50, default='M-Pesa')  # Payment method like M-Pesa or PayPal
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.donor_name} - {self.amount} KES"
